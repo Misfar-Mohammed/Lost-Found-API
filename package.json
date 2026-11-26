@@ -1,0 +1,16 @@
+{
+  "name": "lost-found-management-api",
+  "version": "1.0.0",
+  "description": "A simple Lost and Found Management REST API built with Node.js and Express 5",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env index.js",
+    "dev": "nodemon --exec \"node --env-file-if-exists=.env\" index.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
