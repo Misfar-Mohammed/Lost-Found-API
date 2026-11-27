@@ -90,17 +90,21 @@ A DELETE request without the correct header receives **401 Unauthorized**.
 
 ## Postman Tests
 
-The following test cases were completed:
+The following API endpoints and validation cases were tested successfully using Postman.
 
-| No. | Test | Expected status |
-|---|---|---|
-| 1 | GET / | 200 OK |
-| 2 | GET /items/9999 | 404 Not Found |
-| 3 | POST /items with missing fields | 400 Bad Request |
-| 4 | PUT /items/9999 | 404 Not Found |
-| 5 | DELETE /items/1 without authentication header | 401 Unauthorized |
-| 6 | GET /items/category | 200 OK |
-| 7 | GET /files/images/profile/photo.png | 200 OK |
+| No. | Test | Expected Status |
+| --- | --- | --- |
+| 1 | GET / – Welcome message | 200 OK |
+| 2 | GET /items – Get all items | 200 OK |
+| 3 | GET /items/:id – Get item by ID | 200 OK |
+| 4 | GET /items/99999 – Unknown item | 404 Not Found |
+| 5 | POST /items – Create a new item | 201 Created |
+| 6 | POST /items – Missing required fields | 400 Bad Request |
+| 7 | PUT /items/:id – Update an item | 200 OK |
+| 8 | DELETE /items/:id – Delete an item with authentication | 200 OK |
+| 9 | DELETE /items/:id – Delete without authentication | 401 Unauthorized |
+| 10 | GET /items/search?q=wallet – Search items | 200 OK |
+| 11 | GET /items/category/Electronics – Filter by category | 200 OK |
 
 Postman screenshots are saved in the `screenshots` folder.
 

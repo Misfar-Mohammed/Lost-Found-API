@@ -9,6 +9,7 @@ let items = [
     id: 1,
     itemName: "Black Wallet",
     category: "Personal",
+    estimatedValue: 150000,
     location: "University Library",
     status: "Lost",
     date: "2026-11-20",
@@ -18,6 +19,7 @@ let items = [
     id: 2,
     itemName: "Blue Water Bottle",
     category: "Accessories",
+    estimatedValue: 50000,
     location: "Campus Cafeteria",
     status: "Found",
     date: "2026-11-21",
@@ -27,6 +29,7 @@ let items = [
     id: 3,
     itemName: "Student ID Card",
     category: "Documents",
+    estimatedValue: 0,
     location: "Main Gate",
     status: "Found",
     date: "2026-11-22",
@@ -36,6 +39,7 @@ let items = [
     id: 4,
     itemName: "Wireless Earbuds",
     category: "Electronics",
+    estimatedValue: 350000,
     location: "Computer Lab",
     status: "Lost",
     date: "2026-11-23",
@@ -45,6 +49,7 @@ let items = [
     id: 5,
     itemName: "Black Umbrella",
     category: "Accessories",
+    estimatedValue: 75000,
     location: "Parking Area",
     status: "Found",
     date: "2026-11-24",
@@ -98,12 +103,12 @@ router.get("/", (req, res) => {
 
 // Create a new item
 router.post("/", (req, res) => {
-  const { itemName, category, location, status, date, description } = req.body;
+  const { itemName, category, estimatedValue, location, status, date, description } = req.body;
 
-  if (!itemName || !category || !location || !status || !date || !description) {
+  if (!itemName || !category || typeof estimatedValue !== "number" || estimatedValue < 0 || !location || !status || !date || !description) {
     return res.status(400).json({
       success: false,
-      message: "Please provide itemName, category, location, status, date and description"
+      message: "Please provide itemName, category, a valid estimatedValue (number >= 0), location, status, date and description"
     });
   }
 
@@ -118,6 +123,7 @@ router.post("/", (req, res) => {
     id: items.length ? Math.max(...items.map((item) => item.id)) + 1 : 1,
     itemName,
     category,
+    estimatedValue,
     location,
     status,
     date,
@@ -150,12 +156,12 @@ router.route("/:id")
       throw error;
     }
 
-    const { itemName, category, location, status, date, description } = req.body;
+    const { itemName, category, estimatedValue, location, status, date, description } = req.body;
 
-    if (!itemName || !category || !location || !status || !date || !description) {
+    if (!itemName || !category || typeof estimatedValue !== "number" || estimatedValue < 0 || !location || !status || !date || !description) {
       return res.status(400).json({
         success: false,
-        message: "Please provide all item fields to update"
+        message: "Please provide all item fields, including a valid estimatedValue (number >= 0), to update"
       });
     }
 
@@ -168,6 +174,7 @@ router.route("/:id")
 
     item.itemName = itemName;
     item.category = category;
+    item.estimatedValue = estimatedValue;
     item.location = location;
     item.status = status;
     item.date = date;
