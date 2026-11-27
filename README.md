@@ -93,7 +93,6 @@ A DELETE request without the correct header receives **401 Unauthorized**.
   "status": "Lost",
   "date": "2026-11-26",
   "description": "Small black wallet"
-  "estimatedValue": 150000
 }
 ```
 
@@ -112,8 +111,11 @@ The following API endpoints and validation cases were tested successfully using 
 | 7 | PUT /items/:id – Update an item | 200 OK |
 | 8 | DELETE /items/:id – Delete an item with authentication | 200 OK |
 | 9 | DELETE /items/:id – Delete without authentication | 401 Unauthorized |
-| 10 | GET /items/search?q=wallet – Search items | 200 OK |
+| 10 | GET /items/category – Optional category omitted | 200 OK |
 | 11 | GET /items/category/Electronics – Filter by category | 200 OK |
+| 12 | GET /files/test-document.pdf – Wildcard route | 200 OK |
+| 13 | GET /items/search?q=wallet – Search items | 200 OK |
+| 14 | GET /unknown-route – Unknown URL | 404 Not Found |
 
 Postman screenshots are saved in the `screenshots` folder.
 
