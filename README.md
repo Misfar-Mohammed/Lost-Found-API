@@ -85,6 +85,7 @@ A DELETE request without the correct header receives **401 Unauthorized**.
   "status": "Lost",
   "date": "2026-11-26",
   "description": "Small black wallet"
+  "estimatedValue": 150000
 }
 ```
 
