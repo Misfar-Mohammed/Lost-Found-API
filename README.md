@@ -2,6 +2,13 @@
 
 A REST API for reporting and managing lost and found items. It is built with Node.js and Express 5. The current version stores data in a JavaScript array in memory; it does not use a database.
 
+## Student Information
+
+- **Name:** Rahumathulla Misfar Mohammed
+- **NIM:** 20250040208
+- **University:** Nusa Putra University
+- **Theme:** Lost & Found Management
+
 ## Technologies
 
 - Node.js
@@ -81,6 +88,7 @@ A DELETE request without the correct header receives **401 Unauthorized**.
 {
   "itemName": "Black Wallet",
   "category": "Personal",
+  "estimatedValue": 150000,
   "location": "University Library",
   "status": "Lost",
   "date": "2026-11-26",
